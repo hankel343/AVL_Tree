@@ -23,7 +23,7 @@ private:
 	void DeleteNode(struct Node*& pCurrentNode, int nKey);
 	void Destroy(struct Node*& pCurrentNode);
 	void GetInorderPredecessor(struct Node*& pNode, int& nDeletedValue);
-	void PostOrder(struct Node*& pCurrentNode);
+	void ReverseInOrder(struct Node*& pCurrentNode);
 	void PrintGraph(struct Node* pCurrentNode, int nSpacingValue, int nLevelValue);
 	bool IsFull();
 	bool IsEmpty();
@@ -37,6 +37,7 @@ public:
 	void SortedOrder();
 	void ReverseSortedOrder();
 	void PrintTree();
+	void DestroyTree();
 	
 };
 

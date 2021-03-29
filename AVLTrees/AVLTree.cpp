@@ -7,7 +7,8 @@ AVLTREE::AVLTREE()
 
 void AVLTREE::Insert(int nKey)
 {
-	Add(pRoot, nKey);
+	if (!IsFull())
+		Add(pRoot, nKey);
 }
 
 //Aux. to Insert()
@@ -32,7 +33,8 @@ void AVLTREE::Add(struct Node*& pCurrentNode, int nKey)
 
 void AVLTREE::Delete(int nKey)
 {
-	FindDeletedNode(pRoot, nKey);
+	if (!IsEmpty())
+		FindDeletedNode(pRoot, nKey);
 }
 
 //Aux. to Delete()
@@ -91,23 +93,24 @@ void AVLTREE::InOrder(struct Node*& pRoot)
 
 void AVLTREE::ReverseSortedOrder()
 {
-	PostOrder(pRoot);
+	ReverseInOrder(pRoot);
 }
 
 //Aux. to ReverseSortedOrder()
-void AVLTREE::PostOrder(struct Node*& pCurrentNode)
+void AVLTREE::ReverseInOrder(struct Node*& pCurrentNode)
 {
 	if (pCurrentNode != NULL)
 	{
-		PostOrder(pCurrentNode->pLeft);
-		PostOrder(pCurrentNode->pRight);
+		ReverseInOrder(pCurrentNode->pRight);
 		std::cout << pCurrentNode->nData << std::endl;
+		ReverseInOrder(pCurrentNode->pLeft);
 	}
 }
 
 void AVLTREE::PrintTree()
 {
-	PrintGraph(pRoot, 0, 1);
+	if (!IsEmpty())
+		PrintGraph(pRoot, 0, 1);
 }
 
 //Aux. to PrintTree()
@@ -151,15 +154,21 @@ bool AVLTREE::IsEmpty()
 	return (pRoot == NULL);
 }
 
+void AVLTREE::DestroyTree()
+{
+	Destroy(pRoot);
+	pRoot = NULL;
+}
+
 AVLTREE::~AVLTREE()
 {
 	Destroy(pRoot);
 }
 
-//Aux. to ~AVLTREE()
+//Aux. to ~AVLTREE() and DestroyTree()
 void AVLTREE::Destroy(struct Node*& pCurrentNode)
 {
-	if (pRoot != NULL)
+	if (pCurrentNode != NULL)
 	{
 		Destroy(pCurrentNode->pLeft);
 		Destroy(pCurrentNode->pRight);

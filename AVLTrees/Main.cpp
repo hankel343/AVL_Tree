@@ -21,6 +21,7 @@ int main()
 		cout << "3 - Print the elements of the tree in sorted order.\n";
 		cout << "4 - Print the elements of the tree in reverse sorted order.\n";
 		cout << "5 - Print a 2-D graphical representation of the tree.\n";
+		cout << "6 - Destroy the tree.\n";
 		cout << "Q - Exit the program.\n";
 		cout << "Selection: ";
 		cin >> chInput;
@@ -53,6 +54,9 @@ void ProcessSelection(AVLTREE& Tree, char chInput)
 				break;
 
 	case '5':	Tree.PrintTree();
+				break;
+
+	case '6':	Tree.DestroyTree();
 				break;
 
 	case 'Q':	break;
