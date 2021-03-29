@@ -16,6 +16,7 @@ class AVLTREE
 private:
 	struct Node* pRoot;
 
+	/*Binary Tree Methods*/
 	void Add(struct Node*& pCurrentNode, int nKey);
 	void CreateNode(struct Node*& pNewNode, int nKey);
 	void InOrder(struct Node*& pRoot);
@@ -27,6 +28,17 @@ private:
 	void PrintGraph(struct Node* pCurrentNode, int nSpacingValue, int nLevelValue);
 	bool IsFull();
 	bool IsEmpty();
+
+	/*AVL Tree Rotation Methods*/
+	struct Node* RotateRight(Node* T);
+	struct Node* RotateLeft(Node* T);
+	struct Node* RotateRightLeft(Node* T);
+	struct Node* RotateLeftRight(Node* T);
+
+	/*AVL Height and Balancing Methods*/
+	int Difference(struct Node* T);
+	int GetHeight(struct Node* T);
+	struct Node* Balance(struct Node* T);
 
 public:
 	AVLTREE();
